@@ -1,0 +1,18 @@
+1．	输入格式
+Hadoop有一个类，叫做FileInputFormat类，所以操作文件的InputFormat类都是从这个类继承出来。当开启hadoop作业时，FileInputFormat会得到一个路径参数，就是输入文件的路径。
+常用输入格式：
+TextInputFormat：key时行的字节偏移量，value是行的内容。
+KeyValueInputFormat：key是第一个tab字符前的所有字符，行剩下的内容
+SequenceFileInputFormat：高性能的二进制格式，key和value的内容都是自己定义
+      默认的输入格式是TextInputFormat，你可以使用JobConf对象的SetInputFormat来设置其它的文件输入格式。
+
+2.输出格式
+  当启动作业时，FileOutputFormat会得到一个路径参数，就是输出文件的位置。
+  常用的输出格式：
+ TextOutputFormat:以key+tab+value的方式输出。
+ SequenceFileOutputFormat：输出二进制文件，适合于读取为子MapReduce作业的输入
+ NullOutputFormat：忽略收到的数据，不输出
+     默认的时输出格式是TextOutputFormat,可以用自己设置。这样输出的话，把输出结果作为下一个mapreduce的输入的话，下一个mapreduce就可以用KeyvalueInputFormat的输入格式把它输入进去，如果是用SequenceOutputFormat的形式输出，它会序列化任意类型的数据到文件中，而对应的SequenceInputformat就可以反序列化，提交为下一个map的数据。
+
+   
+
