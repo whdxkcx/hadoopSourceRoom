@@ -2,7 +2,7 @@
 Hadoop有一个类，叫做FileInputFormat类，所以操作文件的InputFormat类都是从这个类继承出来。当开启hadoop作业时，FileInputFormat会得到一个路径参数，就是输入文件的路径。
 常用输入格式：
 TextInputFormat：key时行的字节偏移量，value是行的内容。
-KeyValueInputFormat：key是第一个tab字符前的所有字符，行剩下的内容
+KeyValueInputFormat：key是第一个tab字符前的所有字符，value行剩下的内容
 SequenceFileInputFormat：高性能的二进制格式，key和value的内容都是自己定义
       默认的输入格式是TextInputFormat，你可以使用JobConf对象的SetInputFormat来设置其它的文件输入格式。
 
